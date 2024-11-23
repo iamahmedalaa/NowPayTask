@@ -111,7 +111,7 @@ class LoginActivityHiltTest {
         onView(withId(R.id.loginBt))
             .perform(ViewActions.click())
 
-        onView(withId(R.id.recyclerViewMovies))
+        onView(withId(R.id.rootView))
             .check(matches(isDisplayed()))
     }
 

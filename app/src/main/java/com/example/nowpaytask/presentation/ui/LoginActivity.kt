@@ -9,27 +9,33 @@ import com.example.nowpaytask.databinding.ActivityMainBinding
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private var isValidEmail = false
+    private var isPasswordValid = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        var isValidEmail = false
-        var isPasswordValid = false
+        init()
+    }
+
+    private fun init() {
         binding.apply {
             emailEt.addTextChangedListener {
-                isValidEmail = if (it?.isBlank()?.not() == true) {
-                    it.contains('@') || it.contains('.')
-                } else {
-                    false
-                }
+                isValidEmail =
+                    it.isNullOrBlank().not() == true && (it!!.contains('@') || it.contains('.'))
             }
             passwordEt.addTextChangedListener {
                 isPasswordValid = it?.isBlank()?.not() == true && it.length >= 3
             }
-            loginBt.setOnClickListener {
+        }
+        setOnClick()
+    }
 
+    private fun setOnClick() {
+        binding.apply {
+            loginBt.setOnClickListener {
                 if (isValidEmail.not()) {
                     emailErrorTv.isVisible = true
                 } else if (isPasswordValid.not()) {
@@ -43,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
             }
+
         }
     }
 }
