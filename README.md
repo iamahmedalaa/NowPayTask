@@ -20,7 +20,6 @@ This Android app provides a login screen where users can input their email and p
 
 - **Kotlin**: The language used for development.
 - **Hilt**: Dependency Injection for managing and injecting dependencies.
-- **Jetpack Compose**: For building the UI.
 - **StateFlow**: For managing reactive UI states.
 - **ViewModel**: For managing UI-related data lifecycle-aware.
 - **Espresso**: For writing UI tests.
